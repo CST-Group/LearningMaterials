@@ -30,6 +30,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -235,3 +236,26 @@ __marimo__/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+/nbproject/private/
+.nb-gradle/
+.classpath
+.project
+/logCache/
+/paramCache/
+.gradle/
+.settings/
+
+#Exception
+!/lib/*.jar
+!/gradle/wrapper/*.jar
+
+# Miscellaneous
+*.lock
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
