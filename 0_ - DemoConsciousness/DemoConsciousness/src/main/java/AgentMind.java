@@ -31,7 +31,6 @@ import codelets.perception.AppleDetector;
 import codelets.perception.ClosestAppleDetector;
 import codelets.sensors.InnerSense;
 import codelets.sensors.Vision;
-import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -74,7 +73,6 @@ public class AgentMind extends Mind {
                 List<Thing> vision_list = Collections.synchronizedList(new ArrayList<Thing>());
 		visionMO=createMemoryObject("VISION",vision_list);
                 registerMemory(visionMO,"Sensory");
-                //CreatureInnerSense cis = new CreatureInnerSense();
                 Idea cis = Idea.createIdea("cis","", Idea.guessType("AbstractObject",null,1.0,0.5));
                 cis.add(Idea.createIdea("cis.pitch", 0D, Idea.guessType("Property", null,1.0,0.5)));
                 cis.add(Idea.createIdea("cis.fuel", 0D, Idea.guessType("Property", null,1.0,0.5)));
@@ -114,7 +112,6 @@ public class AgentMind extends Mind {
 		
 		// Create Actuator Codelets
 		Codelet legs=new LegsActionCodelet(env.c);
-		//legs.addInput(legsMO);
                 insertCodelet(legs);
                 registerCodelet(legs,"Motor");
 
@@ -164,6 +161,7 @@ public class AgentMind extends Mind {
                 behavioralCodelets.add(forage);
                 
                 SpotlightBroadcastController spotlightBroadcastControllerCodelet = new SpotlightBroadcastController(getCodeRack());
+                spotlightBroadcastControllerCodelet.setPolicy(SpotlightBroadcastController.Policy.MAX);
                 insertCodelet(spotlightBroadcastControllerCodelet);
                 
                 // sets a time step for running the codelets to avoid heating too much your machine
@@ -171,7 +169,6 @@ public class AgentMind extends Mind {
                     c.setTimeStep(200);
                 }
                 
-		
 		// Start Cognitive Cycle
 		start(); 
     }             
