@@ -10,6 +10,10 @@ public class ActionSelectionCodelet extends Codelet {
     
     private Memory LightIntensityMO;
     private Memory WheelsVelocityMO;
+    
+    public ActionSelectionCodelet() {
+        this.name = "ActionSelectionCodelet";
+    }
 
     @Override
     public void accessMemoryObjects() {
@@ -30,18 +34,6 @@ public class ActionSelectionCodelet extends Codelet {
         
         Double intensityLeft = intensityValues.get(0); 
         Double intensityRight = intensityValues.get(1); 
-//cross, the more, the more - destroy
-//        double vLeft = calculateVelocity(intensityRight, true);
-//        double vRight = calculateVelocity(intensityLeft, true);
-
-//paralel, the more, the more - coward
-//                double vLeft = calculateVelocity(intensityLeft, true);
-//                double vRight = calculateVelocity(intensityRight, true);
-                
-//cross, the more, the less - explorador
-//        double vLeft = calculate >Velocity(intensityRight, false);
-//        double vRight = calcula/teVelocity(intensityLeft, false);
-
 //        paralel, the more, the less - love
         double vLeft = calculateVelocity(intensityLeft, false);
         double vRight = calculateVelocity(intensityRight, false);

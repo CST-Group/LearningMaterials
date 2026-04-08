@@ -25,8 +25,6 @@ repositories {
 
 dependencies {
    implementation 'com.github.CST-Group:cst-desktop:1.1.4'
-   implementation 'com.soartech:jsoar-core:5.1.1'
-   // implementation ':cst-desktop:1.0.4-full'
 }
 
 jar {

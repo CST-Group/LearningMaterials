@@ -33,7 +33,6 @@ public class AgentMind extends Mind {
         Memory positionsMO;
         Memory lightIntensityMO;
         Memory wheelsVelocityMO;
-        Memory memoryThree;
 
         // Memories initialization
         stepMO = createMemoryObject("StepMO");
@@ -45,15 +44,11 @@ public class AgentMind extends Mind {
         registerMemory(lightIntensityMO, "SensorInput");
         wheelsVelocityMO = createMemoryObject("wheelsVelocityMO");
         registerMemory(wheelsVelocityMO, "Motor");
-        memoryThree = createMemoryObject("memoryThree");
-        registerMemory(memoryThree, "Global");
-
         // Codelets initializations
 
         Codelet simulatorConnectionCodelet = new SimulatorConnectionCodelet(sim);
         simulatorConnectionCodelet.addInput(stepMO);
         simulatorConnectionCodelet.addOutput(positionsMO);
-        simulatorConnectionCodelet.addBroadcast(memoryThree);
         insertCodelet(simulatorConnectionCodelet);
         registerCodelet(simulatorConnectionCodelet, "Sensory");
         codelets.add(simulatorConnectionCodelet);
@@ -61,7 +56,6 @@ public class AgentMind extends Mind {
         Codelet lightSensorCodelet = new LightSensorCodelet();
         lightSensorCodelet.addInput(positionsMO);
         lightSensorCodelet.addOutput(lightIntensityMO);
-        lightSensorCodelet.addBroadcast(memoryThree);
         insertCodelet(lightSensorCodelet);
         registerCodelet(lightSensorCodelet, "Sensory");
         codelets.add(lightSensorCodelet);
@@ -69,7 +63,6 @@ public class AgentMind extends Mind {
         Codelet actionSelectionCodelet = new ActionSelectionCodelet();
         actionSelectionCodelet.addInput(lightIntensityMO);
         actionSelectionCodelet.addOutput(wheelsVelocityMO);
-        actionSelectionCodelet.addBroadcast(memoryThree);
         insertCodelet(actionSelectionCodelet);
         registerCodelet(actionSelectionCodelet, "Cognition");
         codelets.add(actionSelectionCodelet);
@@ -77,7 +70,6 @@ public class AgentMind extends Mind {
         Codelet wheelActuatorCodelet = new WheelActuatorCodelet(sim);
         wheelActuatorCodelet.addInput(wheelsVelocityMO);
         wheelActuatorCodelet.addOutput(stepMO);
-        wheelActuatorCodelet.addBroadcast(memoryThree);
         insertCodelet(wheelActuatorCodelet);
         registerCodelet(wheelActuatorCodelet, "Motor");
         codelets.add(wheelActuatorCodelet);

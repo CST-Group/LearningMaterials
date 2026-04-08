@@ -24,6 +24,7 @@ public class WheelActuatorCodelet extends Codelet {
         } catch (CborException ex) {
             Logger.getLogger(WheelActuatorCodelet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.name = "WheelActuatorCodelet";
     }
     
     private void getMotor() throws CborException {

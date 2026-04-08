@@ -10,6 +10,10 @@ public class LightSensorCodelet extends Codelet {
     
     private Memory PositionsMO;
     private Memory LightIntensityMO;
+    
+    public LightSensorCodelet() {
+        this.name = "LightSensorCodelet";
+    }
 
     @Override
     public void accessMemoryObjects() {

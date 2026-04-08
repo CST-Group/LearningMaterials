@@ -23,6 +23,7 @@ public class SimulatorConnectionCodelet extends Codelet {
     Integer lastStep = -1;
     
     public SimulatorConnectionCodelet(RemoteAPIObjects._sim sim){
+        this.name = "SimulatorConnectionCodelet";
         this.sim = sim;
         try {
             this.configSimulator();
